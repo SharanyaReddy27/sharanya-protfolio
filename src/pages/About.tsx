@@ -4,10 +4,8 @@ import MobileNav from "@/components/MobileNav";
 import AboutSection from "@/components/AboutSection";
 import EducationSection from "@/components/EducationSection";
 import Footer from "@/components/Footer";
-
 const About = () => {
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <ParticleBackground />
       
       {/* Desktop Sidebar */}
@@ -23,8 +21,7 @@ const About = () => {
         <section className="pt-32 pb-12 relative">
           <div className="container mx-auto px-8 text-center">
             <span className="text-accent font-mono text-sm mb-4 block animate-pulse">
-              // GET TO KNOW ME
-            </span>
+          </span>
             <h1 className="text-5xl lg:text-7xl font-bold gradient-text mb-6">
               About Me
             </h1>
@@ -38,8 +35,6 @@ const About = () => {
         <EducationSection />
         <Footer />
       </main>
-    </div>
-  );
+    </div>;
 };
-
 export default About;
