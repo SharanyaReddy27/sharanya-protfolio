@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Home, User, Briefcase, Award, Mail, Github, Linkedin, Code } from "lucide-react";
+import { Menu, X, Home, User, Briefcase, Award, Mail, Github, Linkedin, Code, GraduationCap } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 const navItems = [
-  { icon: Home, label: "Home", href: "#home" },
-  { icon: User, label: "About", href: "#about" },
-  { icon: Briefcase, label: "Projects", href: "#projects" },
-  { icon: Award, label: "Certifications", href: "#certifications" },
-  { icon: Mail, label: "Contact", href: "#contact" },
+  { icon: Home, label: "Home", href: "/", isRoute: true },
+  { icon: User, label: "About", href: "/about", isRoute: true },
+  { icon: GraduationCap, label: "Education", href: "/about#education", isRoute: true },
+  { icon: Briefcase, label: "Projects", href: "/#projects", isRoute: false },
+  { icon: Award, label: "Certifications", href: "/#certifications", isRoute: false },
+  { icon: Mail, label: "Contact", href: "/#contact", isRoute: false },
 ];
 
 const socialLinks = [
@@ -18,6 +20,7 @@ const socialLinks = [
 
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <div className="lg:hidden">
@@ -65,22 +68,40 @@ const MobileNav = () => {
 
               {/* Navigation Links */}
               <div className="space-y-2">
-                {navItems.map((item, index) => (
-                  <motion.a
-                    key={item.label}
-                    href={item.href}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-accent/20 transition-colors group"
-                  >
-                    <item.icon className="w-5 h-5 text-accent" />
-                    <span className="font-medium text-foreground group-hover:text-accent transition-colors">
-                      {item.label}
-                    </span>
-                  </motion.a>
-                ))}
+                {navItems.map((item, index) => {
+                  const isActive = item.isRoute 
+                    ? location.pathname === item.href || (item.href.includes('#') && location.pathname === item.href.split('#')[0])
+                    : false;
+                  
+                  const NavWrapper = item.isRoute ? Link : 'a';
+                  const navProps = item.isRoute 
+                    ? { to: item.href }
+                    : { href: item.href };
+
+                  return (
+                    <motion.div
+                      key={item.label}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <NavWrapper
+                        {...navProps as any}
+                        onClick={() => setIsOpen(false)}
+                        className={`flex items-center gap-3 p-3 rounded-xl hover:bg-accent/20 transition-colors group ${
+                          isActive ? "bg-accent/20" : ""
+                        }`}
+                      >
+                        <item.icon className={`w-5 h-5 ${isActive ? "text-accent" : "text-accent"}`} />
+                        <span className={`font-medium transition-colors ${
+                          isActive ? "text-accent" : "text-foreground group-hover:text-accent"
+                        }`}>
+                          {item.label}
+                        </span>
+                      </NavWrapper>
+                    </motion.div>
+                  );
+                })}
               </div>
 
               {/* Social Links */}
