@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
-import { Home, User, Briefcase, Award, Mail, Github, Linkedin, Code } from "lucide-react";
+import { Home, User, Briefcase, Award, Mail, Github, Linkedin, Code, GraduationCap } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 const navItems = [
-  { icon: Home, label: "Home", href: "#home" },
-  { icon: User, label: "About", href: "#about" },
-  { icon: Briefcase, label: "Projects", href: "#projects" },
-  { icon: Award, label: "Certifications", href: "#certifications" },
-  { icon: Mail, label: "Contact", href: "#contact" },
+  { icon: Home, label: "Home", href: "/", isRoute: true },
+  { icon: User, label: "About", href: "/about", isRoute: true },
+  { icon: GraduationCap, label: "Education", href: "/about#education", isRoute: true },
+  { icon: Briefcase, label: "Projects", href: "/#projects", isRoute: false },
+  { icon: Award, label: "Certifications", href: "/#certifications", isRoute: false },
+  { icon: Mail, label: "Contact", href: "/#contact", isRoute: false },
 ];
 
 const socialLinks = [
@@ -16,6 +18,8 @@ const socialLinks = [
 ];
 
 const Sidebar = () => {
+  const location = useLocation();
+  
   return (
     <motion.aside
       initial={{ x: -100, opacity: 0 }}
@@ -33,22 +37,40 @@ const Sidebar = () => {
 
       {/* Navigation */}
       <nav className="flex-1 flex flex-col items-center gap-4">
-        {navItems.map((item, index) => (
-          <motion.a
-            key={item.label}
-            href={item.href}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.1 * index, duration: 0.4 }}
-            whileHover={{ scale: 1.2, x: 5 }}
-            className="group relative p-3 rounded-xl hover:bg-accent/20 transition-all duration-300"
-          >
-            <item.icon className="w-6 h-6 text-muted-foreground group-hover:text-accent transition-colors duration-300" />
-            <span className="absolute left-full ml-4 px-3 py-1 bg-card/90 backdrop-blur-md rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap border border-accent/20">
-              {item.label}
-            </span>
-          </motion.a>
-        ))}
+        {navItems.map((item, index) => {
+          const isActive = item.isRoute 
+            ? location.pathname === item.href || (item.href.includes('#') && location.pathname === item.href.split('#')[0])
+            : false;
+          
+          const NavWrapper = item.isRoute ? Link : 'a';
+          const navProps = item.isRoute 
+            ? { to: item.href }
+            : { href: item.href };
+
+          return (
+            <motion.div
+              key={item.label}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.1 * index, duration: 0.4 }}
+              whileHover={{ scale: 1.2, x: 5 }}
+            >
+              <NavWrapper
+                {...navProps as any}
+                className={`group relative p-3 rounded-xl hover:bg-accent/20 transition-all duration-300 block ${
+                  isActive ? "bg-accent/20" : ""
+                }`}
+              >
+                <item.icon className={`w-6 h-6 transition-colors duration-300 ${
+                  isActive ? "text-accent" : "text-muted-foreground group-hover:text-accent"
+                }`} />
+                <span className="absolute left-full ml-4 px-3 py-1 bg-card/90 backdrop-blur-md rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap border border-accent/20">
+                  {item.label}
+                </span>
+              </NavWrapper>
+            </motion.div>
+          );
+        })}
       </nav>
 
       {/* Social Links */}
