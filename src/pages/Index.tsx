@@ -3,6 +3,8 @@ import Sidebar from "@/components/Sidebar";
 import MobileNav from "@/components/MobileNav";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
+import SkillsSection from "@/components/SkillsSection";
+import ActivitiesSection from "@/components/ActivitiesSection";
 import EducationSection from "@/components/EducationSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import CertificationsSection from "@/components/CertificationsSection";
@@ -25,6 +27,8 @@ const Index = () => {
       <main className="lg:ml-24">
         <HeroSection />
         <AboutSection />
+        <SkillsSection />
+        <ActivitiesSection />
         <EducationSection />
         <ProjectsSection />
         <CertificationsSection />

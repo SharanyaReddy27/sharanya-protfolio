@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Heart, Github, Linkedin, Code, Mail } from "lucide-react";
+import { Heart, Github, Linkedin, Mail } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -7,7 +7,6 @@ const Footer = () => {
   const socialLinks = [
     { icon: Github, href: "https://github.com/sharanyareddy", label: "GitHub" },
     { icon: Linkedin, href: "https://linkedin.com/in/sharanyareddy", label: "LinkedIn" },
-    { icon: Code, href: "https://leetcode.com/sharanyareddy", label: "LeetCode" },
     { icon: Mail, href: "mailto:gudasharanyareddy2703@gmail.com", label: "Email" },
   ];
 
