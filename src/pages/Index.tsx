@@ -2,6 +2,8 @@ import ParticleBackground from "@/components/ParticleBackground";
 import Sidebar from "@/components/Sidebar";
 import MobileNav from "@/components/MobileNav";
 import HeroSection from "@/components/HeroSection";
+import AboutSection from "@/components/AboutSection";
+import EducationSection from "@/components/EducationSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import CertificationsSection from "@/components/CertificationsSection";
 import ContactSection from "@/components/ContactSection";
@@ -22,6 +24,8 @@ const Index = () => {
       
       <main className="lg:ml-24">
         <HeroSection />
+        <AboutSection />
+        <EducationSection />
         <ProjectsSection />
         <CertificationsSection />
         <ContactSection />
