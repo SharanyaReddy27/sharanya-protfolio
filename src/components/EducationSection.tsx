@@ -7,7 +7,7 @@ const education = [
     institution: "VNR Vignana Jyothi Institute of Engineering and Technology",
     location: "Hyderabad, Telangana",
     duration: "2023 - 2027 (Expected)",
-    grade: "Current CGPA: 8.5+",
+    grade: "CGPA: 9.75",
     highlights: [
       "Specialization in Data Science",
       "Active member of Coding Club",
@@ -19,7 +19,7 @@ const education = [
     institution: "Sri Chaitanya Junior College",
     location: "Hyderabad, Telangana",
     duration: "2021 - 2023",
-    grade: "Percentage: 95%+",
+    grade: "Percentage: 98.5%",
     highlights: [
       "Mathematics, Physics, Chemistry",
       "Strong foundation in analytical skills",
@@ -30,7 +30,7 @@ const education = [
     institution: "High School",
     location: "Hyderabad, Telangana",
     duration: "2020 - 2021",
-    grade: "GPA: 10/10",
+    grade: "CGPA: 10",
     highlights: [
       "Excellence in academics",
       "Foundation in computer basics",
