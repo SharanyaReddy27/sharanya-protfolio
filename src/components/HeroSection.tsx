@@ -78,21 +78,16 @@ const HeroSection = () => {
               <Mail className="w-5 h-5" />
               Get in Touch
             </motion.a>
-            <motion.a 
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{
-                scale: 1.05
-              }} 
-              whileTap={{
-                scale: 0.95
-              }} 
-              className="px-6 py-3 lg:px-8 lg:py-4 glass-card font-semibold flex items-center gap-2 hover:border-accent/50 transition-all duration-300"
-            >
-              <Download className="w-5 h-5" />
-              View Resume
-            </motion.a>
+            <a 
+  href="/resume.pdf"
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="px-6 py-3 lg:px-8 lg:py-4 glass-card font-semibold flex items-center gap-2 hover:border-accent/50 transition-all duration-300 hover:scale-105 active:scale-95"
+>
+  <Download className="w-5 h-5" />
+  View Resume
+</a>
+
           </motion.div>
         </motion.div>
 
