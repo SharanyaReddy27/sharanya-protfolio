@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import TypewriterText from "./TypewriterText";
+import resumePdf from "@/assets/resume.pdf";
 import { ArrowDown, Download, Mail } from "lucide-react";
 const HeroSection = () => {
   const roles = ["Full-Stack Developer", "Data Science Enthusiast", "Problem Solver", "Competitive Programmer"];
@@ -79,19 +80,9 @@ const HeroSection = () => {
               Get in Touch
             </motion.a>
             <motion.a 
-              href="/resume.pdf" 
+              href={resumePdf}
               target="_blank" 
               rel="noopener noreferrer"
-              onClick={(e) => {
-                e.preventDefault();
-                const link = document.createElement('a');
-                link.href = '/resume.pdf';
-                link.target = '_blank';
-                link.rel = 'noopener noreferrer';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-              }}
               whileHover={{
                 scale: 1.05
               }} 
