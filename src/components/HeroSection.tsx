@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import TypewriterText from "./TypewriterText";
-import resumePdf from "@/assets/resume.pdf";
 import { ArrowDown, Download, Mail } from "lucide-react";
 const HeroSection = () => {
   const roles = ["Full-Stack Developer", "Data Science Enthusiast", "Problem Solver", "Competitive Programmer"];
@@ -80,8 +79,8 @@ const HeroSection = () => {
               Get in Touch
             </motion.a>
             <motion.a 
-              href={resumePdf}
-              target="_blank" 
+              href="/resume.pdf"
+              target="_blank"
               rel="noopener noreferrer"
               whileHover={{
                 scale: 1.05
