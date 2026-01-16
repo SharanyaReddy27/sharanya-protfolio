@@ -4,13 +4,13 @@ import { Trophy, Users, Code, Award } from "lucide-react";
 const activities = [
   {
     icon: Users,
-    title: "VNR VJIET Coding Club Member",
-    description: "Active member participating in coding challenges and workshops"
+    title: "ISTE Student Chapter Volunteer",
+    description: "Active volunteer contributing to student development initiatives and events"
   },
   {
     icon: Code,
-    title: "Technical Team Member",
-    description: "Contributing to technical projects and team initiatives"
+    title: "Data Questers Member",
+    description: "Technical club member participating in hackathons and workshops"
   },
   {
     icon: Award,
